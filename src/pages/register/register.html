@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <!-- <ion-title><img src="assets/icon/RELOGO.png" alt="Smiley face" height="" width="170"></ion-title> -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="notify()">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="background">
+
+  <div class="act">
+    <div style="display:flex; justify-content:center; align-items:center; align-content:center;flex-direction: column">
+      <img src="assets/img/rlogo.png" alt="Smiley face" height="20%" width="85%">
+    </div>
+    <ion-card>
+      <ion-card-content>
+        <ion-list>
+          <ion-label stacked style="color:black">First Name</ion-label>
+
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+          </ion-item>
+          <br />
+          <ion-label stacked style="color:black">Last Name</ion-label>
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+          </ion-item>
+          <br />
+          <ion-label stacked style="color:black">E-mail Address</ion-label>
+          <ion-item>
+            <ion-input type="email" [(ngModel)]="email"></ion-input>
+          </ion-item>
+          <br />
+          <ion-label stacked style="color:black">Phone Number</ion-label>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="phoneNumber"></ion-input>
+          </ion-item>
+          <br />
+          <div style="display:flex; justify-content:center; align-items:center; align-content:center;">
+            <button class="signin-btn" ion-button block color="blue" (click)="reg()">Create
+              Account</button></div>
+        </ion-list>
+
+        <div class="flexy pt-20"><a style="color:#222" style="margin-right:3px">Have an account?</a>
+
+          <a style="color:#0B2265" (click)="act()"> Sign in Now</a></div>
+
+        <br />
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+</ion-content>
