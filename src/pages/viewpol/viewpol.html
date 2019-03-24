@@ -1,0 +1,45 @@
+<!--
+  Generated template for the PolicyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header no-border>
+  <ion-toolbar>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img style="margin-top:2px" src="assets/img/logo.svg" alt="Smiley face"></ion-title>
+    <ion-buttons>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="gop">
+    <b>Policies</b>
+  </div>
+  <div class="pad">
+    <div style="text-align:center; margin-top:27px; margin-bottom: 0px; font-size: 12px; ">Select a policy to view
+      policy details
+    </div>
+    <ion-list>
+      <ion-card class="box fr" ion-item *ngFor="let film of (films | async)?.results" (click)="openDetails(film)">
+        <ion-card-header>
+          {{ film.title }}
+        </ion-card-header>
+        <div class="sp-left">
+          {{ film.director}}
+        </div>
+        <div class="sp-right">
+          {{ film.release_date}}
+        </div>
+      </ion-card>
+      <br />
+    </ion-list>
+  </div>
+
+</ion-content>

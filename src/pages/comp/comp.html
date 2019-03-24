@@ -1,0 +1,52 @@
+<ion-content padding>
+  <ion-list style="padding:25px; padding-top: 0px">
+    <ion-label stacked style="color:black">Registration Number</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your registration number" [(ngModel)]="registrationNumber"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Brand</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle type" [(ngModel)]="vehicleType"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Engine Number</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your engine number" [(ngModel)]="engineNumber"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Colour</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle colour" [(ngModel)]="colour"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Model</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle model" [(ngModel)]="vehicleModel"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Year</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle year" [(ngModel)]="vehicleYear"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Chassis</ion-label>
+    <ion-item>
+      <ion-label>Select chassis</ion-label>
+      <ion-select [(ngModel)]="chasis">
+        <ion-option value="NEW">New</ion-option>
+        <ion-option value="OLD">Old</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-label stacked style="color:black">Risk Type</ion-label>
+    <ion-item>
+      <ion-label>Name(s)</ion-label>
+      <ion-select [(ngModel)]="riskType">
+        <ion-option *ngFor="let film of (films | async)?.results" [value]="opening_crawl">{{ film.title }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-label stacked style="color:black">Sum Insured</ion-label>
+    <ion-item>
+      <ion-input type="number" placeholder="Enter amount" [(ngModel)]="sumInsured"></ion-input>
+    </ion-item>
+
+    <div style="display:flex; justify-content:center; align-items:center; align-content:center;">
+      <button class="signin-btn" ion-button block color="blue" (click)="pay()">PAY</button></div>
+  </ion-list>
+
+</ion-content>

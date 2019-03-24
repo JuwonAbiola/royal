@@ -1,0 +1,22 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img style="margin-top:2px" src="assets/img/logo.svg" alt="Smiley face"></ion-title>
+    <ion-buttons>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      {{ film.opening_crawl }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

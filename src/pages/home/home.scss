@@ -47,6 +47,8 @@ page-home {
 
   }
 
+
+
   .sp-left {
     float: left;
     text-align: left;
@@ -79,6 +81,7 @@ page-home {
     max-width: 33.18px;
     max-height: 46.5px;
     border: 0;
+    margin-bottom: 7.5px;
   }
 
   #img2 {
@@ -91,6 +94,8 @@ page-home {
     max-width: 39px;
     max-height: 44px;
     border: 0;
+    margin-bottom: 9px;
+
   }
 
   .acti {
@@ -101,7 +106,7 @@ page-home {
     letter-spacing: 0.04em;
     margin-left: 33px;
     margin-right: 28px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 
     color: #1A426D;
   }
@@ -174,5 +179,12 @@ page-home {
     letter-spacing: 0.01em;
     color: #9B9B9B;
     line-height: 1.5;
+  }
+
+  .pd {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    padding-right: 7px !important;
+    padding-left: 7px !important;
   }
 }

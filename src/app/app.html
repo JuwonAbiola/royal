@@ -1,7 +1,18 @@
+<div *ngIf="showSplash" class="splash">
+
+  <div class="spinner" style="
+  display:flex; justify-content:center; align-items:center; align-content:center;">
+    <div class="let1"><img src="assets/img/royal.svg" alt="Smiley face"></div>
+    <div class="let2"><img src="assets/img/box.svg" alt="Smiley face"></div>
+    <div class="let3"><img src="assets/img/ex.svg" alt="Smiley face"></div>
+  </div>
+
+</div>
+
 <ion-menu id="myMenu" [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title><img src="assets/icon/Mask Group 1.svg" alt="Smiley face" height="42" width="42"></ion-title>
+      <ion-title><img src="assets/img/logo.svg"></ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="blue-bg">
@@ -14,4 +25,5 @@
   </ion-content>
 </ion-menu>
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ModalController, ToastController, 
 import { NotificationPage } from '../notification/notification';
 
 import { MenuController } from 'ionic-angular';
+import { PolicyPage } from '../policy/policy';
+import { ClaimPage } from '../claim/claim';
 
 declare var PaypadFacade: any;
 
@@ -20,6 +22,14 @@ export class HomePage {
   ionViewDidLoad() {
 
 
+  }
+
+  policy() {
+    this.navCtrl.push(PolicyPage);
+  }
+
+  claim() {
+    this.navCtrl.push(ClaimPage);
   }
 
 }

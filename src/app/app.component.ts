@@ -5,29 +5,36 @@ import { Nav, Platform, NavController, App, AlertController } from 'ionic-angula
 import { LoginPage } from '../pages/login/login';
 import { NotificationPage } from '../pages/notification/notification';
 import { HomePage } from '../pages/home/home';
+import { PolicyPage } from '../pages/policy/policy';
+import { MotorPage } from '../pages/motor/motor';
+import { ViewcPage } from '../pages/viewc/viewc';
+import { ViewpolPage } from '../pages/viewpol/viewpol';
+import { timer } from 'rxjs/observable/timer';
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = HomePage;
+  rootPage: any = ViewpolPage;
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = PolicyPage;
-  pages: Array<{ name: string, component: any, icon: string }>;
+  pages: Array<{ name: string, component: any }>;
 
+  showSplash = true;
 
-
-  constructor(public platform: Platform, public app: App, public alertCtrl: AlertController
+  constructor(public splashScreen: SplashScreen, public statusBar: StatusBar, public platform: Platform, public app: App, public alertCtrl: AlertController
 
   ) {
     this.initializeApp();
 
     this.pages = [
-      // { name: 'Redownload Keys', component: KeysPage, icon: "download" },
-      { name: 'Notifications', component: NotificationPage, icon: "mail" },
-      { name: 'Logout', component: LoginPage, icon: "log-out" },
+      { name: 'Home', component: HomePage },
+      { name: 'View Policies', component: ViewpolPage },
+      { name: 'View Claims', component: ViewcPage },
+      { name: 'Logout', component: LoginPage },
     ];
   }
 
@@ -37,8 +44,11 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so te platorm is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      // StatusBar.styleDefault();
-      // Splashscreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+
+      timer(3000).subscribe(() => this.showSplash = false) // <-- hide animation after 3s
+
     });
   }
 

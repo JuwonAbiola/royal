@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ThirdPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+  <ion-list style="padding:25px; padding-top: 0px">
+    <ion-label stacked style="color:black">Registration Number</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your registration number" [(ngModel)]="registrationNumber"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Type</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle type" [(ngModel)]="vehicleType"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Engine Number</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your engine number" [(ngModel)]="engineNumber"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Colour</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle colour" [(ngModel)]="colour"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Model</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle model" [(ngModel)]="vehicleModel"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Year</ion-label>
+    <ion-item>
+      <ion-input type="text" placeholder="Enter your vehicle year" [(ngModel)]="vehicleYear"></ion-input>
+    </ion-item>
+    <ion-label stacked style="color:black">Vehicle Chassis</ion-label>
+    <ion-item>
+      <ion-label>Select chassis</ion-label>
+      <ion-select [(ngModel)]="chasis">
+        <ion-option value="NEW">New</ion-option>
+        <ion-option value="OLD">Old</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-label stacked style="color:black">Risk Type</ion-label>
+    <ion-item>
+      <ion-label>Name(s)</ion-label>
+      <ion-select [(ngModel)]="riskType">
+        <ion-option *ngFor="let film of (films | async)?.results" [value]="opening_crawl">{{ film.title }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-label stacked style=" color:black">Premium</ion-label>
+    <div class="goi">
+      <b style="letter-spacing: 0.04em;
+      ">₦5,000</b>
+    </div>
+    <div style="display:flex; justify-content:center; align-items:center; align-content:center;">
+      <button class="signin-btn" ion-button block color="blue" (click)="pay()">PAY</button></div>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,69 @@
+<!--
+  Generated template for the PolicyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header no-border>
+  <ion-toolbar>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><img style="margin-top:2px" src="assets/img/logo.svg" alt="Smiley face"></ion-title>
+    <ion-buttons>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="gop">
+    <b>Create Policy</b>
+  </div>
+  <div class="pad">
+    <div style="text-align:center; margin-top:27px; margin-bottom: 0px; font-size: 12px; ">Kindly select a policy type</div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-card class="box" style="padding:14px;" (click)="motor()">
+            <img id="img1" class="cen" src="assets/img/motor.svg" alt="Smiley face">
+            <div class="img3">Motor</div>
+          </ion-card>
+        </ion-col>
+
+        <ion-col col-6>
+          <ion-card class="box" style="padding:14px;">
+            <img id="img1" class="cen" src="assets/img/life.svg" alt="Smiley face">
+            <div class="img3">Life</div>
+
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid style="padding-top: 0px;">
+      <ion-row>
+        <ion-col col-6 style="padding-top: 0px;">
+          <ion-card class="box" style="padding:14px;     margin-top: 0px;">
+            <img id="img1" class="cen" src="assets/img/property.svg" alt="Smiley face">
+            <div class="img3">Property</div>
+
+          </ion-card>
+        </ion-col>
+
+        <ion-col col-6 style="padding-top: 0px;">
+          <ion-card class="box" style="padding:14px;     margin-top: 0px;">
+            <img id="img1" class="cen" src="assets/img/security.svg" alt="Smiley face">
+            <div class="img3">Security</div>
+
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
