@@ -11,12 +11,53 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <div class="gop" style="margin-bottom:15px">
+    <b>Policies</b>
+  </div>
+  <div class="pad">
+    <b style="color:black">Policy Number</b>
+    <br />
+    <br />
+    {{ film.policyNumber}}
+    <hr>
+    <b style="color:black">Policy Type</b>
+    <br />
+    <br />
+    Motor - Comprehensive
+    <!-- {{ film.director }} -->
+    <hr>
+    <b style="color:black">Vehicle Registration</b>
+    <br />
+    <br />
+    {{ film.itemCode }}
+    <hr>
+    <b>Date</b>
 
+    <br />
+    <br />
+    {{ film.policyStartDate }}
+    <hr>
+    <b style="color:black">Status</b>
+    <br />
+    <br />
+    <div style="color:green" *ngIf="film.status === '0' ">
+      Active
+    </div>
+    <div style="color:red" *ngIf="film.status === '1'">
+      Inactive </div>
+    <hr>
+    <b style="color:black">Sum Assured</b>
+    <br />
+    <br />
+    {{ film.sumAssured }}
+    <hr>
+    <b style="color:black">Claim</b>
+    <br />
+    <br />
+    {{ film.title }}
+    <hr>
 
-<ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      {{ film.opening_crawl }}
-    </ion-card-content>
-  </ion-card>
+  </div>
+
 </ion-content>

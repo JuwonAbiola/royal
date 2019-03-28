@@ -17,11 +17,11 @@ import { timer } from 'rxjs/observable/timer';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = ViewpolPage;
+  rootPage: any = LoginPage;
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = PolicyPage;
-  pages: Array<{ name: string, component: any }>;
+  pages: Array<{ svg: string, name: string, component: any }>;
 
   showSplash = true;
 
@@ -31,10 +31,10 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { name: 'Home', component: HomePage },
-      { name: 'View Policies', component: ViewpolPage },
-      { name: 'View Claims', component: ViewcPage },
-      { name: 'Logout', component: LoginPage },
+      { svg: "assets/img/home.svg", name: 'Home', component: HomePage },
+      { svg: "assets/img/pol.svg", name: 'View Policies', component: ViewpolPage },
+      { svg: "assets/img/cl.svg", name: 'View Claims', component: ViewcPage },
+      { svg: "assets/img/lo.svg", name: 'Log Out', component: LoginPage },
     ];
   }
 

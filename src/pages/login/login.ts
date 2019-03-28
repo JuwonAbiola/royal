@@ -7,10 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { ForgotPage } from '../forgot/forgot';
 import { ResetPage } from '../reset/reset';
+import { NotificationPage } from '../notification/notification';
+import { Baseurl } from '../config/config';
 /**
  * Generated class for the LoginPage page.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
+ * See https://ionicframework.com/docs/components/#na vigation for more info on
  * Ionic pages and navigation.
  */
 
@@ -27,11 +29,12 @@ export class LoginPage {
   constructor(public alertCtrl: AlertController, public loadingCtrl: LoadingController, private http: HttpClient, private toastCtrl: ToastController, public navCtrl: NavController, public menuCtrl: MenuController, public navParams: NavParams) {
     this.menuCtrl.enable(false, 'myMenu');
   }
-  login() {
-    this.navCtrl.push(HomePage);
-  }
+  // login() {
+  //   this.navCtrl.push(HomePage);
+  // }
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+
 
   }
   alertService = (response) => {
@@ -48,6 +51,10 @@ export class LoginPage {
     this.password = '';
   }
 
+  notify() {
+    this.navCtrl.push(NotificationPage);
+  }
+
   act() {
     this.navCtrl.push(RegisterPage);
   }
@@ -55,86 +62,80 @@ export class LoginPage {
     this.navCtrl.push(ForgotPage);
   }
 
-  // login() {
+  login() {
 
 
 
-  // if (this.email === '' || this.password === '') {
+    if (this.email === '' || this.password === '') {
 
-  //   let toast = this.toastCtrl.create({
-  //     message: 'Please Fill all fields',
-  //     duration: 3000,
-  //     position: 'top'
-  //     // cssClass: 'normalToast'
+      let toast = this.toastCtrl.create({
+        message: 'Please Fill all fields',
+        duration: 3000,
+        position: 'top'
+        // cssClass: 'normalToast'
 
-  //   });
+      });
 
-  //   toast.present();
-  //   return;
-  // }
-  // const loader = this.loadingCtrl.create({
-  //   content: "Please wait..."
-  // });
-  // loader.present();
+      toast.present();
+      return;
+    }
+    const loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
 
-  // let header = {
-  //   "Content-type": "application/json"
-  // };
-  // let data = {
-  //   email: this.email,
-  //   password: this.password
-  // }
-  // console.log(data);
+    let header = {
+      "Content-type": "application/json"
+    };
+    let data = {
+      email: this.email,
+      password: this.password
+    }
+    console.log(data);
 
-  // localStorage.setItem('email', this.email);
-  // // localStorage.setItem('password', this.password);
+    localStorage.setItem('email', this.email);
+    // localStorage.setItem('password', this.password);
 
-  // this.http.post("http://192.168.1.111:8000/api/v3/user/login", data, { headers: header })
-  //   .subscribe((res: any) => {
-  //     console.log(res);
+    this.http.post(Baseurl + "api/v3/user/login", data, { headers: header })
+      .subscribe((res: any) => {
+        console.log(res);
+        if (res.responseCode === "00") {
+          console.log(res.data);
+          localStorage.setItem('clientCode', res.data.clientCode);
+          localStorage.setItem('firstName', res.data.firstName);
+          console.log(res.data.clientCode);
+          loader.dismiss();
+          if (localStorage.getItem('email') === localStorage.getItem('ema')) {
+            this.navCtrl.push(ResetPage);
+          }
+          else {
+            this.navCtrl.push(HomePage);
+          }
+        }
+        else {
+          loader.dismiss();
+          const alert = this.alertCtrl.create({
+            title: '',
+            subTitle: res.responseMessage,
+            buttons: ['OK']
+          });
+          alert.present();
+        }
 
-  //     // loader.dismiss();
-  //     alert(res);
-  //     if (res.responseCode === "00") {
+      }, error => {
+        // loader.dismiss();
+        console.log(error);
+        loader.dismiss();
+        // alert(error);
+        const alert = this.alertCtrl.create({
+          title: '',
+          subTitle: "Check your Internet Connection",
+          buttons: ['OK']
+        });
+        alert.present();
 
-  //     }
-  //     else {
-  //       // loader.dismiss();
-  //       const alert = this.alertCtrl.create({
-  //         title: '',
-  //         message: res.message,
-  //         buttons: [
-  //           {
-  //             text: 'OK',
-  //             handler: () => {
-  //               if (localStorage.getItem("password") == 'undefined' || 'null') {
-  //                 this.navCtrl.push(HomePage);
-  //               }
-  //               else {
-  //                 this.navCtrl.push(HomePage);
-  //               }
-  //             }
-  //           }
-  //         ]
-  //       });
-  //       alert.present();
-  //     }
-
-
-  //   }, error => {
-  //     // loader.dismiss();
-  //     console.log(error);
-  //     // loader.dismiss();
-  //     // alert(error);
-  //     const alert = this.alertCtrl.create({
-  //       title: '',
-  //       subTitle: "Check your Internet Connection",
-  //       buttons: ['OK']
-  //     });
-  //     alert.present();
-
-  //   });
-  // }
+      });
+  }
 }
 
 

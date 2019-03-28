@@ -40,9 +40,9 @@
     </ion-item>
     <ion-label stacked style="color:black">Risk Type</ion-label>
     <ion-item>
-      <ion-label>Name(s)</ion-label>
+      <ion-label>Risk Types</ion-label>
       <ion-select [(ngModel)]="riskType">
-        <ion-option *ngFor="let film of (films | async)?.results" [value]="opening_crawl">{{ film.title }}
+        <ion-option *ngFor="let film of (films | async)?.data" [value]="film.code">{{ film.description }}
         </ion-option>
       </ion-select>
     </ion-item>

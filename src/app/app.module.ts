@@ -27,6 +27,7 @@ import { ViewpolPage } from '../pages/viewpol/viewpol';
 import { ViewcPage } from '../pages/viewc/viewc';
 import { PolinfoPage } from '../pages/polinfo/polinfo';
 import { MakeclaimPage } from '../pages/makeclaim/makeclaim';
+import { PolProvider } from '../providers/pol/pol';
 
 
 
@@ -81,7 +82,8 @@ import { MakeclaimPage } from '../pages/makeclaim/makeclaim';
     StatusBar,
     SplashScreen,
     HardwareButtons,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    PolProvider
   ]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { SuperTabsController } from 'ionic2-super-tabs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Baseurl } from '../config/config';
 
 
 /**
@@ -38,7 +39,7 @@ export class ThirdPage {
     let header = {
       "Content-type": "application/json"
     };
-    this.films = this.http.get('https://swapi.co/api/films', { headers: header });
+    this.films = this.http.get(Baseurl + 'api/v3/riskTypes', { headers: header });
     this.films
       .subscribe(data => {
         console.log('my data: ', data);
@@ -71,7 +72,7 @@ export class ThirdPage {
       "Content-type": "application/json"
     };
     let data = {
-      clientCode: this.clientCode,
+      clientCode: localStorage.getItem('clientCode'),
       registrationNumber: this.registrationNumber,
       vehicleType: this.vehicleType,
       engineNumber: this.engineNumber,
@@ -82,32 +83,58 @@ export class ThirdPage {
       riskType: this.riskType
     }
     console.log(data);
-    //   this.http.post("http://localhost:8000/api/v3/policy/create", data, { headers: header })
-    //     .subscribe((res: any) => {
-    //       console.log(res);
+    this.http.post(Baseurl + "api/v3/policy/create", data, { headers: header })
+      .subscribe((res: any) => {
+        console.log(res);
 
-    //       loader.dismiss();
-    //       alert(res);
-    //       if (res.responseCode === "00") {
-    //         alert(res.responseMessage)
-    //       }
-    //       else {
-    //         loader.dismiss();
-    //         alert(res.responseMessage)
-    //       }
-    //     }, error => {
-    //       loader.dismiss();
-    //       console.log(error);
-    //       loader.dismiss();
-    //       // alert(error);
-    //       const alert = this.alertCtrl.create({
-    //         title: '',
-    //         subTitle: "Check your Internet Connection",
-    //         buttons: ['OK']
-    //       });
-    //       alert.present();
+        loader.dismiss();
+        // alert(res);
+        if (res.responseCode === "00") {
+          const alert = this.alertCtrl.create({
+            title: '',
+            message: res.responseMessage,
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  // this.navCtrl.push(LoginPage)
+                }
+              }
+            ]
+          });
+          alert.present();
+          // alert(res.responseMessage)
+        }
+        else {
+          loader.dismiss();
+          const alert = this.alertCtrl.create({
+            title: '',
+            message: res.responseMessage,
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  // this.navCtrl.push(LoginPage)
+                }
+              }
+            ]
+          });
+          alert.present();
+          // alert(res.responseMessage)
+        }
+      }, error => {
+        loader.dismiss();
+        console.log(error);
+        loader.dismiss();
+        // alert(error);
+        const alert = this.alertCtrl.create({
+          title: '',
+          subTitle: "Check your Internet Connection",
+          buttons: ['OK']
+        });
+        alert.present();
 
-    //     });
+      });
   }
 
 }

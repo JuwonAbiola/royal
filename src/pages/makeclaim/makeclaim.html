@@ -28,36 +28,42 @@
     <ion-list>
       <ion-card class="box fr" ion-item (click)="openDetails(film)">
         <ion-card-header>
-          {{ film.title }}
+          {{ film.policyNumber }}
+          <div class="sp-right" *ngIf="film.status === '0' ">
+            <img src="assets/img/greencheck.svg">
+          </div>
+          <div class="sp-right" *ngIf="film.status === '1'">
+            <img src="assets/img/redcheck.svg">
+          </div>
         </ion-card-header>
         <div class="sp-left">
-          {{ film.director}}
+          {{ film.itemDescription}}
         </div>
         <div class="sp-right">
-          {{ film.release_date}}
+          {{ film.policyEndDate}}
         </div>
       </ion-card>
       <ion-label stacked style="color:#0B2265; font-size: 13px;
       margin-top: 15px"><b>Narration</b></ion-label>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="narration"></ion-input>
+        <ion-textarea rows="6" cols="20" type="text" [(ngModel)]="narration"></ion-textarea>
       </ion-item>
       <ion-label stacked style="color:#0B2265; font-size: 13px;
       margin-top: 15px"><b>Loss Date</b></ion-label>
-      <ion-item style="width: 180px !important; height:34px !important;">
-        <ion-input type="date" [(ngModel)]="lossDate" class=""></ion-input>
+      <ion-item class="got" style="width: 180px !important; height:34px !important;">
+        <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="lossDate"></ion-datetime>
         <img src="assets/img/calender.svg" item-left>
       </ion-item>
       <ion-label stacked style="color:#0B2265; font-size: 13px;
       margin-top: 15px"><b>Time</b></ion-label>
-      <ion-item style="width: 150px !important; height:34px !important;">
-        <ion-input type="time" [(ngModel)]="lossTime"></ion-input>
+      <ion-item class="got" style="width: 150px !important; height:34px !important;">
+        <ion-datetime displayFormat="H:mm a" pickerFormat="H mm a" [(ngModel)]="lossTime"></ion-datetime>
         <img src="assets/img/clock.svg" item-left>
       </ion-item>
     </ion-list>
     <div style="
     display:flex; justify-content:center; align-items:center; align-content:center;">
-      <button ion-button block color="blue" (click)="reset()">SUBMIT</button>
+      <button ion-button block color="blue" (click)="claim()">SUBMIT</button>
     </div>
   </div>
 

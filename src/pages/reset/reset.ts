@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { MenuController } from 'ionic-angular'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HomePage } from '../home/home';
+import { Baseurl } from '../config/config';
 /**
  * Generated class for the ResetPage page.
  *
@@ -60,12 +61,13 @@ export class ResetPage {
     }
     console.log(data);
 
-    this.http.post("http://192.168.1.111:8000/api/v3/user/changePassword", data)
+    this.http.post(Baseurl + "api/v3/user/changePassword", data)
       .subscribe((res: any) => {
-        alert(res);
+        // alert(res);
+        console.log(res);
         if (res.responseCode === "00") {
           loader.dismiss();
-          localStorage.setItem("password", this.confirmPassword);
+          localStorage.removeItem('ema')
           const alert = this.alertCtrl.create({
             title: 'Successful',
             message: res.message,
@@ -73,7 +75,7 @@ export class ResetPage {
               {
                 text: 'OK',
                 handler: () => {
-                  this.navCtrl.push(HomePage);
+                  this.navCtrl.push(LoginPage);
                 }
               }
             ]

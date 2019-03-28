@@ -4,6 +4,9 @@ import { LoginPage } from '../login/login';
 import { Injectable } from '@angular/core';
 import { MenuController } from 'ionic-angular'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Baseurl } from '../config/config';
+import { BaseInput } from 'ionic-angular/umd/util/base-input';
+
 /**
  * 
  * Generated class for the RegisterPage page.
@@ -63,18 +66,14 @@ export class RegisterPage {
       lastName: this.lastName,
       email: this.email,
       phoneNumber: this.phoneNumber
-
     }
     console.log(data);
-
-    localStorage.setItem('email', this.email);
-    localStorage.setItem('phoneNumber', this.phoneNumber);
-    localStorage.setItem('lastName', this.lastName);
-    localStorage.setItem('firstName', this.firstName);
-
-    this.http.post("http://192.168.1.111:8000/api/v3/user/create", data)
+    localStorage.setItem('ema', this.email);
+    console.log(this.email)
+    this.http.post(Baseurl + "api/v3/user/create", data)
       .subscribe((res: any) => {
-        alert(res);
+        console.log(this.email);
+        // alert(res);
         if (res.responseCode === "00") {
           loader.dismiss();
           const alert = this.alertCtrl.create({
@@ -95,10 +94,11 @@ export class RegisterPage {
           loader.dismiss();
           const alert = this.alertCtrl.create({
             title: '',
-            subTitle: res.message,
+            subTitle: res.responseMessage,
             buttons: ['OK']
           });
           alert.present();
+          console.log(res.message);
         }
 
 

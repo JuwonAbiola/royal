@@ -26,15 +26,21 @@
     <div style="text-align:center; margin-top:27px; margin-bottom: 0px; font-size: 12px; ">Kindly select a policy
     </div>
     <ion-list>
-      <ion-card class="box fr" ion-item *ngFor="let film of (films | async)?.results" (click)="openDetails(film)">
+      <ion-card class="box fr" ion-item *ngFor="let film of (films | async)?.data" (click)="openDetails(film)">
         <ion-card-header>
-          {{ film.title }}
+          {{ film.policyNumber }}
+          <div class="sp-right" *ngIf="film.status === '0' ">
+            <img src="assets/img/greencheck.svg">
+          </div>
+          <div class="sp-right" *ngIf="film.status === '1'">
+            <img src="assets/img/redcheck.svg">
+          </div>
         </ion-card-header>
         <div class="sp-left">
-          {{ film.director}}
+          {{ film.itemDescription}}
         </div>
         <div class="sp-right">
-          {{ film.release_date}}
+          {{ film.policyEndDate}}
         </div>
       </ion-card>
       <br />

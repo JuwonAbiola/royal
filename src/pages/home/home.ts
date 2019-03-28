@@ -5,6 +5,7 @@ import { NotificationPage } from '../notification/notification';
 import { MenuController } from 'ionic-angular';
 import { PolicyPage } from '../policy/policy';
 import { ClaimPage } from '../claim/claim';
+import { ViewcPage } from '../viewc/viewc';
 
 declare var PaypadFacade: any;
 
@@ -29,7 +30,7 @@ export class HomePage {
   }
 
   claim() {
-    this.navCtrl.push(ClaimPage);
+    this.navCtrl.push(ViewcPage);
   }
 
 }

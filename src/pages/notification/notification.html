@@ -5,12 +5,31 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>Name(s)</ion-label>
     <ion-select [(ngModel)]="fil">
       <ion-option *ngFor="let film of (films | async)?.results" [value]="opening_crawl">{{ film.title }}
       </ion-option>
     </ion-select>
-  </ion-item>
-
+  </ion-item> -->
+  <ion-card class="box fr" ion-item *ngFor="let film of (films | async)?.results" (click)="openDetails(film)">
+    <ion-card-header>
+      {{ film.title }}
+      <div class=" sp-right" *ngIf="film.episode_id === 4">
+        <img src="assets/img/greencheck.svg">
+      </div>
+      <div class="sp-right" *ngIf="film.episode_id === 2">
+        <img src="assets/img/redcheck.svg">
+      </div>
+    </ion-card-header>
+    <div class="sp-left" *ngIf="film.episode_id === 4">
+      <img src="assets/img/greencheck.svg">
+    </div>
+    <div class="sp-left" *ngIf="film.episode_id === 2">
+      <img src="assets/img/redcheck.svg">
+    </div>
+    <div class="sp-right">
+      {{ film.release_date}}
+    </div>
+  </ion-card>
 </ion-content>

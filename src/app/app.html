@@ -18,8 +18,7 @@
   <ion-content class="blue-bg">
     <ion-list no-lines>
       <button class="btn-bg" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon [name]="p.icon" item-left></ion-icon>
-        {{p.name}}
+        <img item-left style="margin-right:5%;" [src]="p.svg"> {{p.name}}
       </button>
     </ion-list>
   </ion-content>

@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PolinfoPage } from '../polinfo/polinfo';
+import { HomePage } from '../home/home';
+import { Injectable } from '@angular/core';
+import { Baseurl } from '../config/config';
+
 
 
 /**
@@ -19,17 +23,27 @@ import { PolinfoPage } from '../polinfo/polinfo';
 })
 export class ViewpolPage {
   films: Observable<any>;
-
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
-    this.films = this.httpClient.get('https://swapi.co/api/films');
-    this.films
-      .subscribe(data => {
-        console.log('my data: ', data);
-      })
 
+  }
+
+  ionViewDidLoad() {
+    this.films = this.httpClient.get(Baseurl + 'api/v3/policy/view/' + localStorage.getItem('email'));
+    this.films
+      .subscribe((res: any) => {
+        console.log('my data: ', res);
+      })
   }
 
   openDetails(film) {
     this.navCtrl.push(PolinfoPage, { film: film });
   }
+
+  back() {
+    this.navCtrl.push(HomePage);
+  }
+
+
+
+
 }
